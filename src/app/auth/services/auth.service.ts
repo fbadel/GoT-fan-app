@@ -22,7 +22,7 @@ export class AuthService {
   login(username: string, password: string) {
 
     if (env.common.login.user == username && env.common.login.pwd == password) {
-      localStorage.setItem('registeredUser', username);
+      sessionStorage.setItem('registeredUser', username);
       this.userSubject.next(username);
       return username;
     }
