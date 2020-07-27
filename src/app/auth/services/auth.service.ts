@@ -11,7 +11,7 @@ export class AuthService {
   public user: Observable<string>;
 
   constructor() {
-    this.userSubject = new BehaviorSubject<string>(JSON.parse(sessionStorage.getItem('registeredUser')));
+    this.userSubject = new BehaviorSubject<string>(sessionStorage.getItem('registeredUser'));
     this.user = this.userSubject.asObservable();
   }
 
