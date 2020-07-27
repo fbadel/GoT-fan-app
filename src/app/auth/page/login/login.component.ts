@@ -1,7 +1,6 @@
 import { Input, Output, EventEmitter, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
-import { first } from 'rxjs/operators';
+import { Router } from '@angular/router';
 import { AuthService } from '@auth/services/auth.service'
 
 /**
@@ -43,8 +42,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-
-    // stop here if form is invalid
+    
     if (this.loginForm.invalid) {
       return;
     }
