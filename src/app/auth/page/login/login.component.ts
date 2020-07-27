@@ -1,6 +1,7 @@
 import { Input, Output, EventEmitter, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
+import { AuthService } from '@auth/services/auth.service'
 
 /**
 * Login Component
@@ -15,9 +16,11 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   loading = false;
   submitted = false;
+  loginError = false;
   
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private authService: AuthService
   ) { }
 
   
@@ -40,6 +43,13 @@ export class LoginComponent implements OnInit {
     }
 
     this.loading = true;
+
+    if(this.authService.login(this.f.login.value, this.f.password.value)){
+      this.loginError = false;
+    }
+    else {
+      this.loginError = true;
+    }
   }
 
 }
