@@ -5,7 +5,8 @@ import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { AuthModule } from './auth/auth.module'
+import { AuthModule } from './auth/auth.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AuthModule } from './auth/auth.module'
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    AuthModule
+    AuthModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
