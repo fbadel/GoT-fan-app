@@ -15,7 +15,7 @@
       "es2018",
       "dom"
     ],
-    "paths": {
+    "paths": { 
       "@env": ["src/environments/environment"],
       "@auth/*": ["src/app/auth/*"]
     }
