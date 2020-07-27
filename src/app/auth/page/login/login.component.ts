@@ -1,5 +1,6 @@
 import { Input, Output, EventEmitter, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { AuthService } from '@auth/services/auth.service'
 
@@ -20,8 +21,14 @@ export class LoginComponent implements OnInit {
   
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
-  ) { }
+    private authService: AuthService,
+    private router: Router
+  ) {
+     // redirect if user already logged in
+     if (this.authService.registeredUserValue) { 
+      this.router.navigate(['/fan-app']);
+  }
+   }
 
   
   ngOnInit(): void {
@@ -46,9 +53,12 @@ export class LoginComponent implements OnInit {
 
     if(this.authService.login(this.f.login.value, this.f.password.value)){
       this.loginError = false;
+      this.router.navigate(['/fan-app']);
+      this.loading = false;
     }
     else {
       this.loginError = true;
+      this.loading = false;
     }
   }
 
